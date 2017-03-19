@@ -1,4 +1,4 @@
-import { ADD_TODO } from './../../actions/todoActions/todoActions'
+import todoConstants from './../../constants/todoConstants/todoConstants'
 /**
  * Todo actions
  * @param todo {Object}
@@ -7,9 +7,6 @@ import { ADD_TODO } from './../../actions/todoActions/todoActions'
  * @param todo.completed {Boolean}
  */
 const initialState = [];
-const toggleTodo = (todo) => {
-  return todo.id
-}
 
 /**
  * Reducer handling data flow between main store object and data
@@ -19,7 +16,7 @@ const toggleTodo = (todo) => {
  */
 function todoReducer(state = initialState, action) {
   switch (action.type) {
-    case 'ADD_TODO':
+    case todoConstants.ADD_TODO:
       return [
         ...state,
         {
@@ -28,11 +25,11 @@ function todoReducer(state = initialState, action) {
           completed: false
         }
       ]
-    case 'DELETE_TODO':
+    case todoConstants.DELETE_TODO:
       return [
         ...state.filter((todo) => todo.id !== action.id)
       ]
-    case 'TOGGLE_TODO':
+    case todoConstants.TOGGLE_TODO:
       return [
         ...state.map((todo) => {
            return todo.id === action.id ? 
