@@ -1,18 +1,15 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux';
-import { todoApp } from './reducers/actions';
-import thunk from 'redux-thunk';
-import promise from 'redux-promise';
-import createLogger from 'redux-logger';
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
+import thunk from 'redux-thunk'
+import createLogger from 'redux-logger'
 
-const logger = createLogger();
+import todoData from './reducers/todoData/todoData'
+
+const logger = createLogger({ diff: false})
 const reducers = combineReducers({
-    todoApp
-});
-const middleware = [thunk, promise, logger];
+    todo: todoData
+})
+const middlewares = applyMiddleware(thunk, logger)
 
-export default (initialState = {}) => {
-    return createStore(
-        reducers,
-        initialState,
-        applyMiddleware(middleware));
-}
+export default compose(
+    middlewares
+)(createStore)(reducers)

@@ -1,4 +1,4 @@
-import reducer from './index'
+import reducer from './mainReducer'
 import { ADD_TODO } from './../constants/actionTypes';
 
 test('combineReducers properly', () => {

@@ -1,11 +1,10 @@
-import React, { PropTypes } from 'react'
-import AppBarComposition from './../../containers/AppBarComposition/AppBarComposition'
-
+import React from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import { red100, red500, red700, purpleA400 } from 'material-ui/styles/colors'
-
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import Content from './../Content/Content'
+
 injectTapEventPlugin();
 /**
  * Main component containing all of the main components
@@ -22,17 +21,9 @@ const muiTheme = getMuiTheme({
 })
 
 const App = () => (
-  <div className="app">
-    <MuiThemeProvider muiTheme={muiTheme}>
-      <AppBarComposition />
-    </MuiThemeProvider>
-  </div>
+  <MuiThemeProvider muiTheme={muiTheme}>
+    <Content />
+  </MuiThemeProvider>
 )
-
-const { object } = PropTypes
-
-App.propTypes = {
-  muiTheme: object
-}
 
 export default App

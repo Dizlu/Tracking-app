@@ -14,7 +14,7 @@ const initialState = [];
  * @param {Object} state - current state of reducer part of store
  * @param {Object} action - action sent to reducer
  */
-function todoReducer(state = initialState, action) {
+export default function todoData(state = initialState, action){
   switch (action.type) {
     case todoConstants.ADD_TODO:
       return [
@@ -43,5 +43,3 @@ function todoReducer(state = initialState, action) {
       return state
   }
 }
-
-export default todoReducer
