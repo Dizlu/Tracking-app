@@ -1,25 +1,23 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addTodo, deleteTodo, toggleTodo} from './../../actions/todoActions/todoActions'
+import CreateTodo from './../../components/Todo/CreateTodo'
 
 export class Todo extends Component {
-
   render() {
     return (
-      <div 
-      onClick={this.props.addTodo}
-        >
-        My first TodooO!
+      <div>
+        <CreateTodo />
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ todo }) => {
+const mapStateToProps = ({ todoData }) => {
   return {
     todoApp: {
       as: 'asdas'
-    }, todo
+    }, todoData
   }
 }
 
