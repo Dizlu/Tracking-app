@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addTodo, deleteTodo, toggleTodo} from './../../actions/todoActions/todoActions'
-import CreateTodo from './../../components/Todo/CreateTodo'
+import { addTodo, deleteTodo, toggleTodo} from './../actions/todoActions'
+import CreateTodo from './../components/CreateTodo'
 
 export class Todo extends Component {
   render() {

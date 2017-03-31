@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import todoData from './todoData/todoData'
+import todoData from './todoData'
 import { routerReducer } from 'react-router-redux'
 
 const mainReducer = combineReducers({

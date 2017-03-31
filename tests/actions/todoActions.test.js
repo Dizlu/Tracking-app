@@ -1,5 +1,5 @@
-import { addTodo, deleteTodo, toggleTodo } from './todoActions'
-import todoConstants from './../../constants/todoConstants/todoConstants'
+import { addTodo, deleteTodo, toggleTodo } from './../../src/actions/todoActions'
+import todoConstants from './../../src/constants/todoConstants'
 
 describe('todoActions', () => {
   it('addTodo', () => {

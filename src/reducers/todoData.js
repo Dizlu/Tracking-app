@@ -1,4 +1,4 @@
-import todoConstants from './../../constants/todoConstants/todoConstants'
+import todoConstants from './../constants/todoConstants'
 /**
  * Todo actions
  * @param todo {Object}

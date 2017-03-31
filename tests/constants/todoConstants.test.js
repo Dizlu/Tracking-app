@@ -1,4 +1,4 @@
-import todoConstants from './todoConstants'
+import todoConstants from './../../src/constants/todoConstants'
 
 describe('todoConstants: ', () => {
   

@@ -1,6 +1,6 @@
 import React from 'react'
-import AppBarComposition from './../../containers/AppBarComposition/AppBarComposition'
-import Todo from './../../containers/Todo/Todo'
+import AppBarComposition from './../containers/AppBarComposition'
+import Todo from './../containers/Todo'
 
 const Content = () =>
   (
