@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addTodo, deleteTodo, toggleTodo} from './../actions/todoActions'
 import CreateTodo from './../components/CreateTodo'
+import ListTodos from './../components/ListTodos'
 
 export class Todo extends Component {
   render() {
     return (
       <div>
-        <CreateTodo />
+        <CreateTodo onAdd={this.props.addTodo}/>
+        <ListTodos todos={this.props.todoData}/>
       </div>
     )
   }
