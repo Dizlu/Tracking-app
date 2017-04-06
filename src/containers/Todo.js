@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addTodo, deleteTodo, toggleTodo} from './../actions/todoActions'
-import CreateTodo from './../components/CreateTodo'
+import CreateTodo from '../components/CreateTodo'
 import ListTodos from './../components/ListTodos'
 
 export class Todo extends Component {
   render() {
     return (
       <div>
-        <CreateTodo onAdd={this.props.addTodo}/>
+        <CreateTodo addTodo={this.props.addTodo}/>
         <ListTodos todos={this.props.todoData}/>
       </div>
     )
@@ -17,16 +17,13 @@ export class Todo extends Component {
 
 const mapStateToProps = ({ todoData }) => {
   return {
-    todoApp: {
-      as: 'asdas'
-    }, todoData
+    todoData
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     addTodo: (text) => {
-      console.log('add')
       dispatch(addTodo(text))
     },
     deleteTodo: (id) => {
