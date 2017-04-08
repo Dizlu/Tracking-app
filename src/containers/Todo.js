@@ -11,6 +11,8 @@ export class Todo extends Component {
         <CreateTodo onSubmit={this.props.addTodo}/>
         <ListTodos
           todoList={this.props.todoReducer}
+          onToggle={this.props.toggleTodo}
+          onDelete={this.props.deleteTodo}
         />
       </div>
     )
