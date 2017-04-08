@@ -1,25 +1,24 @@
-import todoData from '../../src/reducers/todoReducer'
+import todoReducer from '../../src/reducers/todoReducer'
 
 describe('todoData reducer', () => {
   test('invalid method', () => {
     const action = {
       type: 'ADD_ELSE'
     }
-    expect(todoData([], action)).toEqual([]);
+    expect(todoReducer([], action)).toEqual([])
   })
 
   test('ADD_TODO', () => {
     const action = {
       type: 'ADD_TODO',
       text: 'some text',
-      id: 'some id'
     }
     const todo = {
       text: 'some text',
-      id: 'some id',
       completed: false
     }
-    expect(todoData([{}], action)).toEqual([{}, todo])
+    const ret = todoReducer([{}], action)
+    expect(ret[0].text).toEqual(action.text)
   })
 
   test('DELETE_TODO', () => {
@@ -32,7 +31,7 @@ describe('todoData reducer', () => {
       type: 'DELETE_TODO',
       id: 1
     }
-    expect(todoData(todos, action)).toEqual([])
+    expect(todoReducer(todos, action)).toEqual([])
   })
 
   test('TOGGLE_TODO', () => {
@@ -45,7 +44,7 @@ describe('todoData reducer', () => {
       type: 'TOGGLE_TODO',
       id: 1
     }
-    expect(todoData(todos, action)).toEqual([{
+    expect(todoReducer(todos, action)).toEqual([{
       id: 1,
       text: 'some text',
       completed: true
