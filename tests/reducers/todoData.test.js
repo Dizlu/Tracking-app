@@ -1,4 +1,4 @@
-import todoData from './../../src/reducers/todoData'
+import todoData from '../../src/reducers/todoReducer'
 
 describe('todoData reducer', () => {
   test('invalid method', () => {

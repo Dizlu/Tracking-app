@@ -1,4 +1,5 @@
 import todoConstants from './../constants/todoConstants'
+import uuid from 'uuid'
 /**
  * Todo actions
  * @param todo {Object}
@@ -14,14 +15,14 @@ const initialState = [];
  * @param {Object} state - current state of reducer part of store
  * @param {Object} action - action sent to reducer
  */
-export default function todoData(state = initialState, action){
+export default function todoReducer(state = initialState, action){
   switch (action.type) {
     case todoConstants.ADD_TODO:
       return [
         ...state,
         {
           text: action.text,
-          id: action.id,
+          id: uuid.v1(),
           completed: false
         }
       ]

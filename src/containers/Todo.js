@@ -1,30 +1,32 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addTodo, deleteTodo, toggleTodo} from './../actions/todoActions'
-import CreateTodo from '../components/CreateTodo'
+import CreateTodo from './CreateTodo'
 import ListTodos from './../components/ListTodos'
 
 export class Todo extends Component {
   render() {
     return (
       <div>
-        <CreateTodo addTodo={this.props.addTodo}/>
-        <ListTodos todos={this.props.todoData}/>
+        <CreateTodo onSubmit={this.props.addTodo}/>
+        <ListTodos
+          todoList={this.props.todoReducer}
+        />
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ todoData }) => {
-  return {
-    todoData
-  }
+const mapStateToProps = ({ todoReducer }) => {
+    return {
+        todoReducer
+    };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addTodo: (text) => {
-      dispatch(addTodo(text))
+    addTodo: (formData) => {
+      dispatch(addTodo(formData.todoText))
     },
     deleteTodo: (id) => {
       dispatch(deleteTodo(id))
