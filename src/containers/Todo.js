@@ -8,7 +8,8 @@ export class Todo extends Component {
   render() {
     return (
       <div>
-        <CreateTodo onSubmit={this.props.addTodo}/>
+        <CreateTodo
+          onSubmit={this.props.addTodo}/>
         <ListTodos
           todoList={this.props.todoReducer}
           onToggle={this.props.toggleTodo}

@@ -8,12 +8,12 @@ class CreateTodo extends Component {
   render () {
     const {handleSubmit} = this.props
     return (
-      <Card containerStyle={{margin: '50px', textAlign: 'center'}}>
-        <CardHeader title="Some title"/>
+      <Card style={{margin: '2em', padding: '1em', display: 'flex', 'justify-content': 'space-around'}}>
+        <CardHeader title={'title will be listed in here'}/>
         <CardText>
           <form onSubmit={handleSubmit}>
             <div>
-              <Field label="Enter Todo" name="todoText" component={TextField}/>
+              <Field style={{'justify-content': 'space-around'}} label="Enter Todo" name="todoText" component={TextField}/>
             </div>
             <div>
               <RaisedButton label="Create Todo" onClick={handleSubmit}/>

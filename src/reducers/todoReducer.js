@@ -3,7 +3,7 @@ import uuid from 'uuid'
 /**
  * Todo actions
  * @param todo {Object}
- * @param todo.id {Uuid}
+ * @param todo.id {String}
  * @param todo.text {String}
  * @param todo.completed {Boolean}
  */
@@ -35,12 +35,12 @@ export default function todoReducer (state = initialState, action) {
   switch (action.type) {
     case todoConstants.ADD_TODO:
       return [
-        ...state,
         {
           text: action.text,
           id: generateUuid(),
           completed: false
-        }
+        },
+        ...state
       ]
     case todoConstants.DELETE_TODO:
       return [

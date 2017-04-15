@@ -18,10 +18,18 @@ const ListTodos = ({todoList = [], onToggle, onDelete}) =>
           .map((todo) => {
             return (
               <TableRow selected={todo.completed} key={todo.id}>
-                <TableRowColumn>
+                <TableRowColumn
+                  style={{
+                    'vertical-align': 'middle'
+                  }}>
                   {todo.text}
                 </TableRowColumn>
-                <TableRowColumn>
+                <TableRowColumn
+                  style={{
+                    width: '30%',
+                    'text-align': 'center',
+                    'vertical-align': 'middle'
+                  }}>
                   <Delete onClick={(e) => {
                     e.stopPropagation()
                     e.nativeEvent.stopImmediatePropagation()
