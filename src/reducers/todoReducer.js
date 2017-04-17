@@ -1,29 +1,35 @@
 import todoConstants from './../constants/todoConstants'
 import uuid from 'uuid'
 /**
- * Todo actions
- * @param todo {Object}
- * @param todo.id {String}
- * @param todo.text {String}
- * @param todo.completed {Boolean}
+ * Todo list actions
+ * @param todoTitle {String} description of a todoList
+ * @param todoId {String} identifier of an todos list
+ * @param todoList.todo {Object}
+ * @param todoList.todo.id {String}
+ * @param todoList.todo.text {String}
+ * @param todoList.todo.completed {Boolean}
  */
-const initialState = [
-  {
-    id: 12312,
-    text: 'some text broah',
-    completed: true
-  }, {
-    id: 12312234,
-    text: 'some text broah',
-    completed: false
-  }, {
-    id: 12323412,
-    text: 'some text broah',
-    completed: true
-  }
-]
-
 const generateUuid = () => uuid();
+const initialState = [{
+  todoList: [{id: 12312, text: 'some text broah', completed: true }],
+  todoTitle: 'Some list title',
+  todoId: generateUuid()
+}]
+const generateTodo = (text) => {
+  return {
+    text: text,
+    id: generateUuid(),
+    completed: false
+  }
+}
+
+const generateTodoList = (title) => {
+  return {
+    todoList: [],
+    todoTitle: '',
+    todoId: generateUuid()
+  }
+}
 
 /**
  * Reducer handling data flow between main store object and data
@@ -33,13 +39,14 @@ const generateUuid = () => uuid();
  */
 export default function todoReducer (state = initialState, action) {
   switch (action.type) {
+    case todoConstants.ADD_TODO_LIST:
+      return [
+        generateTodoList(action.text),
+        ...state
+      ]
     case todoConstants.ADD_TODO:
       return [
-        {
-          text: action.text,
-          id: generateUuid(),
-          completed: false
-        },
+        generateTodo(action.text),
         ...state
       ]
     case todoConstants.DELETE_TODO:

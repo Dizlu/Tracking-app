@@ -1,7 +1,6 @@
 import todoConstants from './../../src/constants/todoConstants'
 
 describe('todoConstants: ', () => {
-  
   test('ADD_TODO is defined', () => {
     expect(todoConstants.ADD_TODO).toEqual('ADD_TODO')
   })
@@ -13,4 +12,4 @@ describe('todoConstants: ', () => {
   test('TOGGLE_TODO is defined', () => {
     expect(todoConstants.TOGGLE_TODO).toEqual('TOGGLE_TODO')
   })
-});
+})
