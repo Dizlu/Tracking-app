@@ -32,7 +32,7 @@ describe('todoData reducer', () => {
     })
     test('CHANGE_TITLE_LIST', () => {
       const action = {
-        type: 'CHANGE_TITLE_LIST',
+        type: 'CHANGE_TODO_LIST_TITLE',
         title: 'new_title',
         id: 123
       }
