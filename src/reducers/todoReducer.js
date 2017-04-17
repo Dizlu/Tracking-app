@@ -1,39 +1,42 @@
 import todoConstants from './../constants/todoConstants'
 import uuid from 'uuid'
 /**
- * Todo list actions
- * @param todoTitle {String} description of a todoList
- * @param todoId {String} identifier of an todos list
- * @param todoList.todo {Object}
- * @param todoList.todo.id {String}
- * @param todoList.todo.text {String}
- * @param todoList.todo.completed {Boolean}
+ * Todo list actions with multiple lists containing todos
+ * @param listTitle {String} description of a todoList
+ * @param listId {String} identifier of an todos list
+ * @param list.todo {Object}
+ * @param list.todo.id {String}
+ * @param list.todo.text {String}
+ * @param list.todo.completed {Boolean}
  */
-const generateUuid = () => uuid();
+const generateUuid = () => uuid()
 const initialState = [{
-  todoList: [{id: 12312, text: 'some text broah', completed: true }],
+  todoList: [{id: 12312, text: 'some text broah', completed: true}],
   todoTitle: 'Some list title',
   todoId: generateUuid()
 }]
 const generateTodo = (text) => {
   return {
     text: text,
-    id: generateUuid(),
-    completed: false
+    completed: false,
+    id: generateUuid()
   }
 }
-
 const generateTodoList = (title) => {
   return {
-    todoList: [],
-    todoTitle: '',
-    todoId: generateUuid()
+    list: [],
+    listTitle: title,
+    listId: generateUuid()
   }
 }
+const modifyTodo = (todoList, id, text, completed) => {
+  return todoList.map(todo => {
 
+  })
+}
 /**
  * Reducer handling data flow between main store object and data
- * of todos in active list
+ * of multiple lists containing todos
  * @param {Object} state - current state of reducer part of store
  * @param {Object} action - action sent to reducer
  */
@@ -41,17 +44,47 @@ export default function todoReducer (state = initialState, action) {
   switch (action.type) {
     case todoConstants.ADD_TODO_LIST:
       return [
-        generateTodoList(action.text),
+        generateTodoList(action.listTitle),
         ...state
       ]
+    case todoConstants.DELETE_TODO_LIST:
+      return [
+        ...state.filter(todoList => todoList.listId !== action.listId)
+      ]
+    case todoConstants.CHANGE_TODO_LIST_TITLE:
+      return [
+        ...state.map(todoList => {
+          if (todoList.listId === action.listId) {
+            todoList.listTitle = action.listTitle
+          }
+          return todoList
+        })
+      ]
+    //TodoActions
     case todoConstants.ADD_TODO:
       return [
-        generateTodo(action.text),
-        ...state
+        ...state.map(todoList => {
+          if (todoList.listId === action.listId) {
+            todoList.list = [
+              generateTodo(action.text),
+              ...todoList.list
+            ]
+          }
+          return todoList
+        })
       ]
     case todoConstants.DELETE_TODO:
       return [
-        ...state.filter((todo) => todo.id !== action.id)
+        ...state.map(todoList => {
+          if (todoList.listId === action.listId) {
+            return {
+              list: [...todoList.list.filter((todo) => todo.id !== action.id)],
+              listTitle: todoList.listTitle,
+              listId: todoList.listId
+            }
+          }
+          return todoList
+        })
       ]
     case todoConstants.TOGGLE_TODO:
       return [

@@ -11,7 +11,7 @@ describe('todoData reducer', () => {
     test('ADD_TODO_LIST', () => {
       const action = {
         type: 'ADD_TODO_LIST',
-        title: 'title_list'
+        listTitle: 'title_list'
       }
       const ret = todoReducer([], action)
       expect(ret[0].listTitle).toEqual('title_list')
@@ -20,7 +20,7 @@ describe('todoData reducer', () => {
     test('DELETE_TODO_LIST', () => {
       const action = {
         type: 'DELETE_TODO_LIST',
-        id: 123
+        listId: 123
       }
       const initialState = [{
         list: [{id: 123234, text: 'some text broah', completed: true}],
@@ -30,11 +30,11 @@ describe('todoData reducer', () => {
       const ret = todoReducer(initialState, action)
       expect(ret[0]).toEqual(undefined)
     })
-    test('CHANGE_TITLE_LIST', () => {
+    test('CHANGE_TODO_LIST_TITLE', () => {
       const action = {
         type: 'CHANGE_TODO_LIST_TITLE',
-        title: 'new_title',
-        id: 123
+        listTitle: 'new_title',
+        listId: 123
       }
       const initialState = [{
         list: [{id: 123234, text: 'some text broah', completed: true}],
