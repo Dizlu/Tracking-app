@@ -73,7 +73,7 @@ describe('todoData reducer', () => {
         listTitle: 'title',
         listId: 123
       }]
-      expect(todoReducer(initialState, action)).toEqual([{ list: [], listTitle: 'title', listId: '123'}])
+      expect(todoReducer(initialState, action)).toEqual([{ list: [], listTitle: 'title', listId: 123}])
     })
     test('TOGGLE_TODO', () => {
       const initialState = [{

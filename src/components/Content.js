@@ -1,12 +1,12 @@
 import React from 'react'
 import AppBarComposition from './../containers/AppBarComposition'
-import Todo from './../containers/Todo'
+import TodoSection from './../containers/TodoSection'
 
 const Content = () =>
   (
     <div>
       <AppBarComposition />
-      <Todo />
+      <TodoSection />
     </div>
   )
 

@@ -11,9 +11,9 @@ import uuid from 'uuid'
  */
 const generateUuid = () => uuid()
 const initialState = [{
-  todoList: [{id: 12312, text: 'some text broah', completed: true}],
+  list: [{id: 12312, text: 'some text broah', completed: true}],
   todoTitle: 'Some list title',
-  todoId: generateUuid()
+  listId: generateUuid()
 }]
 const generateTodo = (text) => {
   return {
@@ -28,11 +28,6 @@ const generateTodoList = (title) => {
     listTitle: title,
     listId: generateUuid()
   }
-}
-const modifyTodo = (todoList, id, text, completed) => {
-  return todoList.map(todo => {
-
-  })
 }
 /**
  * Reducer handling data flow between main store object and data
@@ -88,14 +83,20 @@ export default function todoReducer (state = initialState, action) {
       ]
     case todoConstants.TOGGLE_TODO:
       return [
-        ...state.map((todo) => {
-          return todo.id === action.id ? {
-            ...todo,
-            completed: !todo.completed
-          } : todo
+        ...state.map((todoList) => {
+          if (todoList.listId === action.listId) {
+            return {
+              ...todoList,
+              list: todoList.list.map(todo => {
+                if (todo.id === action.id) {
+                  todo.completed = !todo.completed
+                }
+                return todo
+              })
+            }
+          }
         })
       ]
-    //@TODO : make explicit set and unset or fix problems with synch on table
     default:
       return state
   }
