@@ -5,25 +5,27 @@ import todoConstants from './../constants/todoConstants'
 
 /**
  * Adds another todo into active list
+ * @param {Number} listId - id of list to append todo
  * @param {String} text - message for todo
- * @param {String} listId - id of list to append todo
  */
-export function addTodo (text, listId) {
-  return {type: todoConstants.ADD_TODO, text, listId}
+export function addTodo (listId, text) {
+  return {type: todoConstants.ADD_TODO, listId, text}
 }
 
 /**
  * Deletes todo from active list
- * @param {Uuid} id - todo to delete
+ * @param {Number} listId - id of list in which delete todo
+ * @param {Number} id - todo to delete
  */
-export function deleteTodo (id) {
-  return {type: todoConstants.DELETE_TODO, id}
+export function deleteTodo (listId, id) {
+  return {type: todoConstants.DELETE_TODO, listId, id}
 }
 
 /**
  * Toggles completed key into opposite Boolean value
- * @param {Uuid} id - todo for completed value toggle
+ * @param {Number} listId - id of list in which toggle todo
+ * @param {Number} id - todo for completed value toggle
  */
-export function toggleTodo (id) {
-  return {type: todoConstants.TOGGLE_TODO, id}
+export function toggleTodo (listId, id) {
+  return {type: todoConstants.TOGGLE_TODO, listId, id}
 }

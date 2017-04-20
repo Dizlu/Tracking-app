@@ -29,9 +29,7 @@ const TodoList = ({todoList = [], onToggle, onDelete}) =>
                     'text-align': 'center',
                     'verticalAlign': 'middle'
                   }}>
-                  <Delete onClick={(e) => {
-                    e.stopPropagation()
-                    e.nativeEvent.stopImmediatePropagation()
+                  <Delete onClick={() => {
                     onDelete(todo.id)
                   }}/>
                 </TableRowColumn>

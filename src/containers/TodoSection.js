@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addTodo } from './../actions/todoActions'
-import Todo from './Todo'
+import { addTodo, deleteTodo } from './../actions/todoActions'
+import TodoList from './../components/TodoList'
 import CreateTodo from './CreateTodo'
 
 export class TodoSection extends Component {
@@ -9,11 +9,11 @@ export class TodoSection extends Component {
     return (
       <div>
         <CreateTodo
-          onSubmit={ (formData) => {
-            this.props.addTodo(formData, this.props.todoReducer[0].listId)
-          }} />
-        <Todo
+          onSubmit={this.props.addTodo.bind(this, this.props.todoReducer[0].listId)}
+        />
+        <TodoList
           todoList={this.props.todoReducer[0].list}
+          onDelete={this.props.deleteTodo.bind(this, this.props.todoReducer[0].listId)}
         />
       </div>
     )
@@ -28,9 +28,12 @@ const mapStateToProps = ({ todoReducer }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      addTodo: (formData, listId) => {
-        dispatch(addTodo(formData.todoText, listId))
-      }
+      addTodo: (listId, formData) => {
+        dispatch(addTodo(listId, formData.todoText))
+      },
+    deleteTodo: (listId, id) => {
+      dispatch(deleteTodo(listId, id))
+    }
   }
 }
 
