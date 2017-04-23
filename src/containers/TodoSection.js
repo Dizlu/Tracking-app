@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addTodo, deleteTodo } from './../actions/todoActions'
-import TodoList from './../components/TodoList'
+import { addTodo, deleteTodo, toggleTodo } from './../actions/todoActions'
+import ListContainer from '../components/ListContainer'
 import CreateTodo from './CreateTodo'
 
 export class TodoSection extends Component {
@@ -11,8 +11,9 @@ export class TodoSection extends Component {
         <CreateTodo
           onSubmit={this.props.addTodo.bind(this, this.props.todoReducer[0].listId)}
         />
-        <TodoList
+        <ListContainer
           todoList={this.props.todoReducer[0].list}
+          onToggle={this.props.toggleTodo.bind(this, this.props.todoReducer[0].listId)}
           onDelete={this.props.deleteTodo.bind(this, this.props.todoReducer[0].listId)}
         />
       </div>
@@ -31,6 +32,9 @@ const mapDispatchToProps = (dispatch) => {
       addTodo: (listId, formData) => {
         dispatch(addTodo(listId, formData.todoText))
       },
+    toggleTodo: (listId, id) => {
+        dispatch(toggleTodo(listId, id))
+    },
     deleteTodo: (listId, id) => {
       dispatch(deleteTodo(listId, id))
     }

@@ -8,7 +8,7 @@ class CreateTodo extends Component {
   render () {
     const {handleSubmit} = this.props
     return (
-      <Card style={{margin: '2em', padding: '1em', display: 'flex', 'justify-content': 'space-around'}}>
+      <Card style={{margin: '2em', padding: '1em', display: 'flex', 'justifyContent': 'space-around'}}>
         <CardText>
           <form onSubmit={handleSubmit}>
             <div>
