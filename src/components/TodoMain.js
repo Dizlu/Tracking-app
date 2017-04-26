@@ -2,7 +2,7 @@ import React from 'react'
 import AppBarComposition from './../containers/AppBarComposition'
 import TodoSection from './../containers/TodoSection'
 
-const Content = () =>
+const TodoMain = () =>
   (
     <div>
       <AppBarComposition />
@@ -10,4 +10,4 @@ const Content = () =>
     </div>
   )
 
-export default Content
+export default TodoMain

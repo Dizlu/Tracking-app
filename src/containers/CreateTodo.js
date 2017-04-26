@@ -15,7 +15,7 @@ class CreateTodo extends Component {
               <Field label="Enter Todo" name="todoText" component={TextField}/>
             </div>
             <div>
-              <RaisedButton primary={true} fullWidth={true} label="Create Todo" onClick={handleSubmit}/>
+              <RaisedButton secondary={true} fullWidth={true} label="Create Todo" onClick={handleSubmit}/>
             </div>
           </form>
         </CardText>
