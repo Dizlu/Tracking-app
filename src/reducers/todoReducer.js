@@ -11,7 +11,7 @@ import uuid from 'uuid'
  */
 const generateUuid = () => uuid()
 const initialState = [{
-  list: [{id: 12312, text: 'some text broah', completed: true}],
+  list: [{id: 12312, text: 'Some example text', completed: true}],
   todoTitle: 'Some list title',
   listId: generateUuid()
 }]
